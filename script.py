@@ -24,13 +24,12 @@ def parse_args():
             else:
                 arg = args[args.index("--json") + 1]
             config["json"] = json.loads(arg)
+            
         except json.decoder.JSONDecodeError:
             with open(arg,'r') as j:
                 config["json"] = json.loads(j.read())
 
     return config
-
-#url = "http://localhost:1337/api/submit"
 
 def payload(s,json): 
     cmd = (
@@ -49,19 +48,23 @@ def nonempty(s):
 
 def run():
     config = parse_args()
+    
     #test request for url validation
     try:
         res = requests.post(config.get("url"))
     except requests.ConnectionError:
         print("invalid url: " + config.get("url"))
         sys.exit(-1)
+        
     cmd = input("\t>")
+    
     while cmd.lower() != 'exit':
         res = requests.post(
                 config.get("url"),
                 json=payload(cmd,config.get("json",dict())))
+        
         if res.status_code == 200:
-            print("\n".join(res.json().get("response").split('\n')[1:-1]))
+            print("\n".join(res.json().get("response").split('\n')[1:-1]))          
         else:
             try:
                 from bs4 import BeautifulSoup
@@ -81,5 +84,6 @@ def main():
     except KeyboardInterrupt:
         print("\nStopped by user")
         sys.exit(-1)
+
 if __name__ == "__main__":
     main()
