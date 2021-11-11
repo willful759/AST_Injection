@@ -21,7 +21,7 @@ you need with the `-j,--json` flag.
 ## Example
 
 ```bash
-python script.py -d "http://localhost:1337/api/submit" -j blitz.json
+python script.py -u "http://localhost:1337/api/submit" -j blitz.json
 ```
 if needed, you can just write the JSON object
 
