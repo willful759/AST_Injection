@@ -1,17 +1,17 @@
-# ATS Injection script
+# AST Injection script
 
 Small script used for the `gunship` and `blitzpop` ctfs,extended to be a little more flexible.
 
 ## Installation
 
-If you want nicer error looking reports, you'll need the `beautifulsoup4` package,
+If you want better error reports, you'll need the `beautifulsoup4` package,
 but it's not necessary.
 
 ```bash
 pip install beautifulsoup4
 ```
 
-Otherwise, just clone the repo into any folder you'd like.
+Otherwise, just clone the repo into any folder you like.
 
 ## Usage
 
